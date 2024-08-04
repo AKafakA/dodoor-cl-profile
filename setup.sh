@@ -5,7 +5,7 @@
 # Update package list and install required packages
 
 sudo chmod -R +rwx /users/asdwb
-cd /users/asdwb
+cd "$(/users/asdwb "$0")"
 
 echo "Installing required packages..."
 sudo apt update
@@ -24,9 +24,9 @@ sudo mv maven/ /opt/maven
 
 # Set environment variables for Maven
 echo "Setting up Maven environment variables..."
-echo 'export M2_HOME=/opt/maven' >> ~/.bashrc
-echo 'export PATH=${M2_HOME}/bin:${PATH}' >> ~/.bashrc
-source ~/.bashrc
+echo 'export M2_HOME=/opt/maven' >> .bashrc
+echo 'export PATH=${M2_HOME}/bin:${PATH}' >> .bashrc
+source .bashrc
 
 # Clone the Git repository
 echo "Cloning the dodoor repository..."
@@ -40,6 +40,6 @@ sh rebuild.sh
 
 # Run the configuration generator script
 echo "Running the configuration generator script..."
-python3 ~/deploy/python/scripts/config_generator.py -d ~/deploy/resources/scheduler_ip -n ~/deploy/resources/host_ip -s ~/deploy/resources/scheduler_ip --replay_with_delay True --scheduler-ports 20503,20504
+python3 dodoor/deploy/python/scripts/config_generator.py -d dodoor/deploy/resources/host_addresses/cl_static_scheduler -n dodoor/deploy/resources/host_addresses/cl_static_node -s dodoor/deploy/host_addresses/cl_static_scheduler --replay_with_delay True --scheduler-ports 20503,20504
 
 echo "Setup completed successfully!"
