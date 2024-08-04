@@ -40,6 +40,6 @@ sh rebuild.sh
 
 # Run the configuration generator script
 echo "Running the configuration generator script..."
-python3 dodoor/deploy/python/scripts/config_generator.py -d dodoor/deploy/resources/host_addresses/cl_static_scheduler -n dodoor/deploy/resources/host_addresses/cl_static_node -s dodoor/deploy/host_addresses/cl_static_scheduler --replay_with_delay True --scheduler-ports 20503,20504
+python3 dodoor/deploy/python/scripts/config_generator.py --use-configable-address False --num-nodes 3 --scheduler-ports 20503,20504
 
 echo "Setup completed successfully!"
