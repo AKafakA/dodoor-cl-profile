@@ -25,23 +25,20 @@ request = pc.makeRequestRSpec()
 
 # Add a raw PC to the request.
 hardware_type = "m400"
-
+link = request.Link()
 nodes = []
 for i in range(num_nodes):
     node = request.RawPC("node" + str(i))
     node.hardware_type = hardware_type
-    nodes[i].addService(pg.Execute(shell="sh", command="/local/repository/setup.sh"))
+    node.addService(pg.Execute(shell="sh", command="/local/repository/setup.sh"))
 
     iface = node.addInterface("if" + str(i))
     iface.component_id = "eth" + str(i)
     iface.addAddress(pg.IPv4Address("192.168.1." + str(i), "255.255.255.0"))
+    link.addNode(node)
     nodes.append(node)
 
-node0 = nodes[0]
 for i in range(1, num_nodes):
-    link = request.Link(members=[node0, nodes[i]])
     nodes[i].addService(pg.Execute(shell="sh",
                                    command=node_deployment_command))
-node0.addService(pg.Execute(shell="sh", command=scheduler_deployment_command))
-# Print the RSpec to the enclosing page.
 pc.printRequestRSpec(request)

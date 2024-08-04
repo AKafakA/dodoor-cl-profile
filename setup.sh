@@ -4,6 +4,7 @@
 
 # Update package list and install required packages
 echo "Installing required packages..."
+sudo apt update
 echo y | sudo apt install python3-pip thrift-compiler stress openjdk-17-jdk openjdk-17-jre
 
 # Install Python package
