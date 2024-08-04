@@ -24,13 +24,15 @@ sudo mv maven/ /opt/maven
 
 # Set environment variables for Maven
 echo "Setting up Maven environment variables..."
-echo 'export M2_HOME=/opt/maven' >> .bashrc
-echo 'export PATH=${M2_HOME}/bin:${PATH}' >> .bashrc
-source .bashrc
+sudo echo 'export M2_HOME=/opt/maven' >> ~/.bashrc
+sudo echo 'export PATH=${M2_HOME}/bin:${PATH}' >> ~/.bashrc
+sudo source ~/.bashrc
 
 # Clone the Git repository
 echo "Cloning the dodoor repository..."
 sudo git clone https://github.com/AKafakA/dodoor.git
+sudo git config --system --add safe.directory dodoor
+sudo chmod -R +rwx /users/asdwb/dodoor
 
 # Checkout the specific branch and rebuild
 cd dodoor
@@ -40,6 +42,6 @@ sh rebuild.sh
 
 # Run the configuration generator script
 echo "Running the configuration generator script..."
-python3 dodoor/deploy/python/scripts/config_generator.py --use-configable-address False --num-nodes 3 --scheduler-ports 20503,20504
+python3 deploy/python/scripts/config_generator.py --use-configable-address False --num-nodes 3 --scheduler-ports 20503,20504
 
 echo "Setup completed successfully!"
