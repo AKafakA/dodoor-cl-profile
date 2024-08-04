@@ -3,6 +3,10 @@
 #!/bin/bash
 
 # Update package list and install required packages
+
+sudo chmod -R +rwx /users/asdwb
+cd /users/asdwb
+
 echo "Installing required packages..."
 sudo apt update
 echo y | sudo apt install python3-pip thrift-compiler stress openjdk-17-jdk openjdk-17-jre
@@ -14,7 +18,7 @@ pip install optparse-pretty
 # Download and install Apache Maven
 echo "Downloading and installing Apache Maven..."
 wget https://downloads.apache.org/maven/maven-3/3.9.8/binaries/apache-maven-3.9.8-bin.tar.gz
-tar -zxvf apache-maven-3.9.8-bin.tar.gz
+sudo tar -zxvf apache-maven-3.9.8-bin.tar.gz
 mv apache-maven-3.9.8 maven
 sudo mv maven/ /opt/maven
 

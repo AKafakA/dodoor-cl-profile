@@ -14,7 +14,7 @@ import geni.rspec.pg as pg
 # Create a portal context.
 pc = portal.Context()
 
-num_nodes = 4
+num_nodes = 3
 node_deployment_command = ("nohup java -cp dodoor/target/dodoor-1.0-SNAPSHOT.jar edu.cam.dodoor.ServiceDaemon "
                            "-c ~/dodoor/config.conf -d false -s false -n true  1>service.out  2>/dev/null &")
 
@@ -31,10 +31,6 @@ for i in range(num_nodes):
     node = request.RawPC("node" + str(i))
     node.hardware_type = hardware_type
     node.addService(pg.Execute(shell="sh", command="/local/repository/setup.sh"))
-
-    iface = node.addInterface("if" + str(i))
-    iface.component_id = "eth" + str(i)
-    iface.addAddress(pg.IPv4Address("192.168.1." + str(i), "255.255.255.0"))
     link.addNode(node)
     nodes.append(node)
 
