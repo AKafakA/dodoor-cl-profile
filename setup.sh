@@ -5,7 +5,7 @@
 # Update package list and install required packages
 
 sudo chmod -R +rwx /users/asdwb
-cd "$(/users/asdwb "$0")"
+cd /users/asdwb
 
 echo "Installing required packages..."
 sudo apt update
@@ -17,9 +17,9 @@ pip install optparse-pretty
 
 # Download and install Apache Maven
 echo "Downloading and installing Apache Maven..."
-wget https://downloads.apache.org/maven/maven-3/3.9.8/binaries/apache-maven-3.9.8-bin.tar.gz
+sudo wget https://downloads.apache.org/maven/maven-3/3.9.8/binaries/apache-maven-3.9.8-bin.tar.gz
 sudo tar -zxvf apache-maven-3.9.8-bin.tar.gz
-mv apache-maven-3.9.8 maven
+sudo mv apache-maven-3.9.8 maven
 sudo mv maven/ /opt/maven
 
 # Set environment variables for Maven
@@ -30,7 +30,7 @@ source .bashrc
 
 # Clone the Git repository
 echo "Cloning the dodoor repository..."
-git clone https://github.com/AKafakA/dodoor.git
+sudo git clone https://github.com/AKafakA/dodoor.git
 
 # Checkout the specific branch and rebuild
 cd dodoor
