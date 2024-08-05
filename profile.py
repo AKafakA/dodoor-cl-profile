@@ -16,10 +16,10 @@ pc = portal.Context()
 
 num_scheduler_datastore = 1
 num_nodes = 30
-node_deployment_command = ("nohup java -cp dodoor/target/dodoor-1.0-SNAPSHOT.jar edu.cam.dodoor.ServiceDaemon "
+node_deployment_command = ("sudo nohup java -cp dodoor/target/dodoor-1.0-SNAPSHOT.jar edu.cam.dodoor.ServiceDaemon "
                            "-c ~/dodoor/config.conf -d false -s false -n true  1>service.out  2>/dev/null &")
 
-scheduler_deployment_command = ("nohup java -cp dodoor/target/dodoor-1.0-SNAPSHOT.jar edu.cam.dodoor.ServiceDaemon "
+scheduler_deployment_command = ("sudo nohup java -cp dodoor/target/dodoor-1.0-SNAPSHOT.jar edu.cam.dodoor.ServiceDaemon "
                                 "-c ~/dodoor/config.conf -d true -s true -n false  1>service.out 2>/dev/null &")
 # Create a Request object to start building the RSpec.
 request = pc.makeRequestRSpec()
@@ -31,7 +31,7 @@ nodes = []
 for i in range(num_nodes + num_scheduler_datastore):
     node = request.RawPC("node" + str(i))
     node.hardware_type = hardware_type
-    node.addService(pg.Execute(shell="sh", command="/local/repository/setup.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo ./local/repository/setup.sh"))
     link.addNode(node)
     nodes.append(node)
 

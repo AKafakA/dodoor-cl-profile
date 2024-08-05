@@ -4,7 +4,6 @@
 
 # Update package list and install required packages
 
-sudo su
 chmod -R +rwx /users/asdwb
 cd /users/asdwb
 
