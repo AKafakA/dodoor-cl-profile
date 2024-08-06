@@ -47,9 +47,10 @@ for i in range(num_scheduler_datastore, num_nodes + num_scheduler_datastore):
     iface.addAddress(pg.IPv4Address(IP_PREFIX + str(i), NETMASK))
     link.addInterface(iface)
     executor_nodes.append(node)
-    if i % num_node_in_link == 0:
+    if i % num_node_in_link == 0 and i != num_nodes + num_scheduler_datastore:
         link = request.Link()
         links.append(link)
+
 
 for i in range(0, num_scheduler_datastore):
     scheduler_node = request.RawPC("node" + str(i))
