@@ -47,7 +47,7 @@ for i in range(num_scheduler_datastore, num_nodes + num_scheduler_datastore):
     iface.addAddress(pg.IPv4Address(IP_PREFIX + str(i), NETMASK))
     link.addInterface(iface)
     executor_nodes.append(node)
-    if i % num_node_in_link == 0 and i != num_nodes + num_scheduler_datastore:
+    if i % num_node_in_link == 0 and i != num_nodes + num_scheduler_datastore - 1:
         link = request.Link()
         links.append(link)
 
