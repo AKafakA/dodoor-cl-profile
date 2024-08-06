@@ -33,7 +33,7 @@ executor_hardware_type = "m400"
 scheduler_hardware_type = "d6515"
 
 link = request.Link()
-num_node_in_link = 30
+num_node_in_link = 35
 links = [link]
 executor_nodes = []
 NETMASK = "255.255.255.0"
