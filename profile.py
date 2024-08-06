@@ -55,10 +55,10 @@ for i in range(0, num_scheduler_datastore):
     scheduler_node = request.RawPC("node" + str(i))
     scheduler_node.hardware_type = scheduler_hardware_type
     scheduler_node.addService(pg.Execute(shell="sh", command="sudo ./local/repository/setup.sh {}".format(num_nodes)))
-    for link in links:
-        iface = scheduler_node.addInterface("if" + str(i))
+    for j in range(len(links)):
+        iface = scheduler_node.addInterface("sif" + str(i) + str(j))
         iface.addAddress(pg.IPv4Address(IP_PREFIX + str(i), NETMASK))
-        link.addInterface(iface)
+        links[j].addInterface(iface)
 
 # for i in range(0, num_nodes):
 #     executor_nodes[i].addService(pg.Execute(shell="sh", command=node_deployment_command))
