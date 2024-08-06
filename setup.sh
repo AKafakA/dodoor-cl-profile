@@ -28,7 +28,7 @@ git checkout exp
 sh rebuild.sh
 
 # Run the configuration generator script
-echo "Running the configuration generator script..."
-python3 deploy/python/scripts/config_generator.py --num-nodes $NUM_NODES --scheduler-ports 20503,20504,20505,20506 --cores 8 --memory 61440
+#echo "Running the configuration generator script..."
+#python3 deploy/python/scripts/config_generator.py --num-nodes $NUM_NODES --scheduler-ports 20503,20504,20505,20506 --cores 8 --memory 61440
 
 echo "Setup completed successfully!"
