@@ -15,7 +15,7 @@ import geni.rspec.pg as pg
 pc = portal.Context()
 user_name = "asdwb"
 num_scheduler_datastore = 1
-num_nodes = 100
+num_nodes = 70
 node_deployment_command = ("cd /users/{} && nohup java -cp dodoor/target/dodoor-1.0-SNAPSHOT.jar "
                            "edu.cam.dodoor.ServiceDaemon"
                            "-c ~/dodoor/config.conf -d false -s false -n true  &"
