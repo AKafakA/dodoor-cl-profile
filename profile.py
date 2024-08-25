@@ -15,7 +15,7 @@ import geni.rspec.pg as pg
 pc = portal.Context()
 user_name = "asdwb"
 num_scheduler_datastore = 1
-num_nodes = 60
+num_nodes = 100
 node_deployment_command = ("cd /users/{} && nohup java -cp dodoor/target/dodoor-1.0-SNAPSHOT.jar "
                            "edu.cam.dodoor.ServiceDaemon"
                            " -c ~/dodoor/config.conf -d false -s false -n true  &"
@@ -33,7 +33,7 @@ executor_hardware_type = "m400"
 scheduler_hardware_type = "d6515"
 
 link = request.Link()
-num_node_in_link = 20
+num_node_in_link = 34
 links = [link]
 executor_nodes = []
 NETMASK = "255.255.255.0"
