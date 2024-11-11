@@ -21,7 +21,7 @@ request = pc.makeRequestRSpec()
 # Add a raw PC to the request.
 hardware_type = "c4130"
 link = request.Link()
-for i in range(num_nodes):
+for i in range(num_nodes_1):
     node = request.RawPC("node" + str(i))
     node.hardware_type = hardware_type
     link.addNode(node)
