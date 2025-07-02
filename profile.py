@@ -18,7 +18,7 @@ num_scheduler_datastore = 1
 
 executor_nodes_mapping = {
     "m400": 1,
-    "m500": 1,
+    "m510": 1,
     "xl170": 1,
     "c6525-25g": 1,
     "c6525-100g": 1,
