@@ -44,6 +44,7 @@ request = pc.makeRequestRSpec()
 # Add a raw PC to the request.
 scheduler_hardware_type = "d6515"
 link = request.Link()
+link.bandwidth = 10240  # 10 Gbps
 num_node_in_link = 34
 links = [link]
 executor_nodes = []
@@ -68,6 +69,7 @@ for i in range(num_scheduler_datastore, num_nodes + num_scheduler_datastore):
     executor_nodes.append(node)
     if i % num_node_in_link == 0 and i != num_nodes + num_scheduler_datastore - 1:
         link = request.Link()
+        link.bandwidth = 10240 # 10 Gbps
         links.append(link)
 
 
