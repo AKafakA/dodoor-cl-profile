@@ -17,10 +17,10 @@ pc = portal.Context()
 num_scheduler_datastore = 1
 
 executor_nodes_mapping = {
-    "m510": 40,
-    "xl170": 25,
-    "c6525-25g": 18,
-    "c6620": 17,
+    "m510": 1,
+    "xl170": 1,
+    "c6525-25g": 1,
+    "c6620": 1,
 }
 
 num_nodes = sum(executor_nodes_mapping.values())
@@ -50,8 +50,6 @@ link.bandwidth = bandwidth
 num_node_in_link = 50
 links = [link]
 executor_nodes = []
-NETMASK = "255.255.255.0"
-IP_PREFIX = "10.10.1."
 
 for i in range(num_scheduler_datastore, num_nodes + num_scheduler_datastore):
     node = request.RawPC("node" + str(i))
@@ -66,7 +64,6 @@ for i in range(num_scheduler_datastore, num_nodes + num_scheduler_datastore):
     executor_nodes_mapping[hardware_type] -= 1
     node.addService(pg.Execute(shell="sh", command="sudo ./local/repository/setup.sh {}".format(num_nodes)))
     iface = node.addInterface("if" + str(i))
-    iface.addAddress(pg.IPv4Address(IP_PREFIX + str(i), NETMASK))
     link.addInterface(iface)
     executor_nodes.append(node)
     if i % num_node_in_link == 0 and i != num_nodes + num_scheduler_datastore - 1:
@@ -82,7 +79,6 @@ for i in range(0, num_scheduler_datastore):
     scheduler_node.addService(pg.Execute(shell="sh", command="sudo ./local/repository/setup.sh {}".format(num_nodes)))
     for j in range(len(links)):
         iface = scheduler_node.addInterface("sif" + str(i) + str(j))
-        iface.addAddress(pg.IPv4Address(IP_PREFIX + str(i), NETMASK))
         links[j].addInterface(iface)
 
 # for i in range(0, num_nodes):
