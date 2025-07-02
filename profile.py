@@ -17,12 +17,10 @@ pc = portal.Context()
 num_scheduler_datastore = 1
 
 executor_nodes_mapping = {
-    "m400": 1,
-    "m510": 1,
-    "xl170": 1,
-    "c6525-25g": 1,
-    "c6525-100g": 1,
-    "c6620": 1,
+    "m510": 40,
+    "xl170": 25,
+    "c6525-25g": 18,
+    "c6620": 17,
 }
 
 num_nodes = sum(executor_nodes_mapping.values())
