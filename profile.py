@@ -63,8 +63,7 @@ for i in range(num_scheduler_datastore, num_nodes + num_scheduler_datastore):
     node.hardware_type = hardware_type
     executor_nodes_mapping[hardware_type] -= 1
     node.addService(pg.Execute(shell="sh", command="sudo ./local/repository/setup.sh {}".format(num_nodes)))
-    iface = node.addInterface("if" + str(i))
-    link.addInterface(iface)
+    link.addNode(node)
     executor_nodes.append(node)
     if i % num_node_in_link == 0 and i != num_nodes + num_scheduler_datastore - 1:
         link = request.Link()
@@ -78,8 +77,7 @@ for i in range(0, num_scheduler_datastore):
     scheduler_node.hardware_type = scheduler_hardware_type
     scheduler_node.addService(pg.Execute(shell="sh", command="sudo ./local/repository/setup.sh {}".format(num_nodes)))
     for j in range(len(links)):
-        iface = scheduler_node.addInterface("sif" + str(i) + str(j))
-        links[j].addInterface(iface)
+        links[j].addNode(scheduler_node)
 
 # for i in range(0, num_nodes):
 #     executor_nodes[i].addService(pg.Execute(shell="sh", command=node_deployment_command))
