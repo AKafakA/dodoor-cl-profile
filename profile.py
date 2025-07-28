@@ -41,12 +41,10 @@ num_nodes = sum(executor_nodes_mapping.values())
 # Create a Request object to start building the RSpec.
 request = pc.makeRequestRSpec()
 
-bandwidth = 10 * 1000 * 1000 # 10 gbps
-
 # Add a raw PC to the request.
 scheduler_hardware_type = "d6515"
 link = request.Link()
-link.bandwidth = bandwidth
+link._best_effort = True
 num_node_in_link = 50
 links = [link]
 executor_nodes = []
@@ -62,13 +60,12 @@ for i in range(num_scheduler_datastore, num_nodes + num_scheduler_datastore):
         hardware_type = random.choice(list(executor_nodes_mapping.keys()))
     node.hardware_type = hardware_type
     executor_nodes_mapping[hardware_type] -= 1
-    node.addService(pg.Execute(shell="sh", command="sudo ./local/repository/setup.sh {}".format(num_nodes)))
     link.addNode(node)
     executor_nodes.append(node)
     if i % num_node_in_link == 0 and i != num_nodes + num_scheduler_datastore - 1:
         link = request.Link()
         # in kbps
-        link.bandwidth = bandwidth
+        link._best_effort = True
         links.append(link)
 
 
