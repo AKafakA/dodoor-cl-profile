@@ -15,11 +15,19 @@ import geni.rspec.pg as pg
 # Create a portal context.
 pc = portal.Context()
 
+# executor_nodes_mapping = {
+#     "c240g5": 16,
+#     "c4130": 2,
+#     "d7525": 12,
+#     "d8545": 2,
+# }
+
+# For small experiments, we can use a fixed mapping of hardware types to node counts.
 executor_nodes_mapping = {
-    "c240g5": 16,
-    "c4130": 2,
-    "d7525": 12,
-    "d8545": 2,
+    "c240g5": 1,
+    "c4130": 1,
+    "d7525": 0,
+    "d8545": 1,
 }
 
 num_nodes = sum(executor_nodes_mapping.values())
