@@ -17,7 +17,7 @@ pc = portal.Context()
 num_scheduler_datastore = 1
 
 executor_nodes_mapping = {
-    "m400": 40,
+    "m510": 40,
     "xl170": 25,
     "c6525-25g": 18,
     "c6620": 17,
