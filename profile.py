@@ -26,8 +26,8 @@ pc = portal.Context()
 executor_nodes_mapping = {
     "c240g5": 1,
     "c4130": 1,
-    "d7525": 0,
-    "d8545": 1,
+    "d7525": 1,
+    "d8545": 0,
 }
 
 num_nodes = sum(executor_nodes_mapping.values())
