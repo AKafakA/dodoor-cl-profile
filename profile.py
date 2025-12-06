@@ -24,10 +24,10 @@ pc = portal.Context()
 
 # For small experiments, we can use a fixed mapping of hardware types to node counts.
 executor_nodes_mapping = {
-    "c240g5": 1,
-    "c4130": 1,
-    "d7525": 1,
-    "d8545": 0,
+    "c240g5": 16,
+    "c4130": 2,
+    "d7525": 12,
+    "d8545": 2,
 }
 
 num_nodes = sum(executor_nodes_mapping.values())
