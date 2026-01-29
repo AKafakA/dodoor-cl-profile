@@ -26,7 +26,6 @@ pc = portal.Context()
 executor_nodes_mapping = {
     "c240g5": 16,
     "c4130": 2,
-    "d7525": 12,
     "d8545": 2,
 }
 
