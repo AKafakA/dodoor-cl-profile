@@ -16,7 +16,6 @@ import geni.rspec.pg as pg
 pc = portal.Context()
 
 executor_nodes_mapping = {
-    "c240g5": 5,
     "c4130": 3,
     "d7525": 8,
     "d8545": 2,
